@@ -1,13 +1,75 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white;
+  background-color: black;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.carousel-posters {
+  width: 100%;
+  height: 590px;
+}
+
+.movieCard:hover {
+  cursor: pointer;
+  box-shadow: 0 0 20px 20px rgba(150, 147, 147, 0.2);
+}
+
+.content-card-container {
+  margin-top: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 150px;
+}
+
+.movie-card-container {
+  height: 340px;
+  padding: 0;
+  background: rgb(34, 33, 33);
+  font-size: 14px;
+}
+
+.card-body {
+  padding: 4% 5% 0 5%;
+}
+
+.card-subtitle {
+  padding-bottom: 0;
+}
+
+.btn-genres {
+  margin-left: 7%;
+  margin-right: 5%;
+  text-align: center;
+}
+.genre-button {
+  background: none;
+}
+
+.rating-review-total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 400px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 150px;
+}
+
+.page {
+  background: none;
+  /* border: none; */
 }
