@@ -14,18 +14,18 @@ import pic3 from "../assets/avatar_poster_edit.jpg";
 const items = [
   {
     src: pic1,
-    altText: "Slide 1",
-    caption: "Slide 1",
+    altText: "JOHN WICK",
+    caption: "What to re-Watch on April",
   },
   {
     src: pic2,
-    altText: "Slide 2",
-    caption: "Slide 2",
+    altText: "JOKER",
+    caption: "Now Streaming on Netflix",
   },
   {
     src: pic3,
-    altText: "Slide 3",
-    caption: "Slide 3",
+    altText: "Avatar",
+    caption: "Our Streaming Picks for the Month",
   },
 ];
 
@@ -58,10 +58,10 @@ function CarouselHome() {
         key={item.src}
       >
         <img src={item.src} alt={item.altText} className="carousel-posters" />
-        {/* <CarouselCaption
+        <CarouselCaption
+          captionHeader={item.altText}
           captionText={item.caption}
-          captionHeader={item.caption}
-        /> */}
+        />
       </CarouselItem>
     );
   });

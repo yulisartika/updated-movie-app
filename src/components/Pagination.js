@@ -17,7 +17,7 @@ function Pagination() {
   return (
     <div className="pagination-container">
       {page !== 1 && (
-        <Button onClick={() => handleChangePage(page - 1)} className="page">
+        <Button onClick={() => handleChangePage(page - 1)}>
           {page !== 1 ? "<<" : ">>"}
         </Button>
       )}
@@ -43,9 +43,7 @@ function Pagination() {
         3
       </Button> */}
       {/* next seharusnya dirubah juga  later! */}
-      <Button onClick={() => handleChangePage(page + 1)} className="page">
-        {`>>`}
-      </Button>
+      <Button onClick={() => handleChangePage(page + 1)}>{`>>`}</Button>
     </div>
   );
 }

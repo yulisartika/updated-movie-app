@@ -13,10 +13,10 @@ import {
 } from "../../redux/actions/movieAction";
 
 function Home() {
+  const [genreId, setGenreId] = useState(0);
+
   const dispatch = useDispatch();
   const { allMovies, genres } = useSelector((state) => state.movies);
-
-  const [genreId, setGenreId] = useState(0);
 
   useEffect(() => {
     dispatch(getMovies());
@@ -71,6 +71,9 @@ function Home() {
                 title={item.original_title}
                 rating={item.vote_average / 2}
                 vote={item.vote_count}
+                overview={item.overview}
+                release={item.release_date}
+                forAge={item.adult}
               />
             </Col>
           ))}

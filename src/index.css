@@ -69,7 +69,25 @@ code {
   margin-bottom: 150px;
 }
 
-.page {
-  background: none;
-  /* border: none; */
+.modal {
+  color: black;
+}
+
+.modal-body-popUp {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  font-size: 14px;
+  padding-top: 0;
+}
+
+.modal-body-popUp img {
+  width: 1000px;
+  height: 180px;
+  object-fit: cover;
+  object-position: 20% 10%;
+  margin: auto;
+  margin-top: 4%;
+  margin-bottom: 3%;
+  border-radius: 3px;
 }
