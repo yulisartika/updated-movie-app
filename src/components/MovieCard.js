@@ -29,7 +29,7 @@ function MovieCard(props) {
 
   return (
     <div>
-      <Card className="movie-card-container" onClick={toggle}>
+      {/* <Card className="movie-card-container" onClick={toggle}>
         <CardImg src={image} />
         <CardBody className="card-body">
           <div className="rating-review-total">
@@ -42,7 +42,13 @@ function MovieCard(props) {
             <b>{title}</b>
           </CardTitle>
         </CardBody>
-      </Card>
+      </Card> */}
+      <div onClick={toggle}>
+        <img src={image} />
+        <ReactStars size={15} value={rating} edit={false} isHalf={true} />
+        <span>{vote} votes</span>
+        <h5>{title}</h5>
+      </div>
       <div className="modal">
         <Modal isOpen={modal} toggle={toggle} className={className}>
           <ModalHeader toggle={toggle}>{title}</ModalHeader>

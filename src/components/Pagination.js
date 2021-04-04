@@ -4,7 +4,7 @@ import { Button } from "reactstrap";
 
 import { getMovies } from "../redux/actions/movieAction";
 
-function Pagination() {
+function Pagination({ totalPages }) {
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -14,36 +14,21 @@ function Pagination() {
     dispatch(getMovies(pg));
   };
 
+  // console.log(totalPages);
+
   return (
     <div className="pagination-container">
-      {page !== 1 && (
-        <Button onClick={() => handleChangePage(page - 1)}>
-          {page !== 1 ? "<<" : ">>"}
-        </Button>
+      {page > 1 ? (
+        <Button onClick={() => handleChangePage(page - 1)}>{"<<"}</Button>
+      ) : (
+        <Button disabled>{"No Previous"}</Button>
       )}
-      {/* <Button
-        onClick={() => handleChangePage(1)}
-        color={page === 1 ? "secondary" : "genre-button"}
-        // className="rounded-circle mr-2"
-      >
-        1
-      </Button>
-      <Button
-        onClick={() => handleChangePage(2)}
-        color={page === 2 ? "secondary" : "genre-button"}
-        // className="rounded-circle mr-2"
-      >
-        2
-      </Button>
-      <Button
-        onClick={() => handleChangePage(3)}
-        color={page === 3 ? "secondary" : "genre-button"}
-        // className="rounded-circle mr-2"
-      >
-        3
-      </Button> */}
-      {/* next seharusnya dirubah juga  later! */}
-      <Button onClick={() => handleChangePage(page + 1)}>{`>>`}</Button>
+
+      {page !== totalPages ? (
+        <Button onClick={() => handleChangePage(page + 1)}>{`>>`}</Button>
+      ) : (
+        <Button disabled>{"No More Next"}</Button>
+      )}
     </div>
   );
 }

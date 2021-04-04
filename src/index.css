@@ -1,3 +1,17 @@
+@import "./styles/navbar.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+*:focus {
+  outline: none;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -9,14 +23,9 @@ body {
   background-color: black;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .carousel-posters {
   width: 100%;
-  height: 590px;
+  height: 600px;
 }
 
 .movieCard:hover {
@@ -90,4 +99,45 @@ code {
   margin-top: 4%;
   margin-bottom: 3%;
   border-radius: 3px;
+}
+
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 16px;
+}
+
+.movie-item:hover {
+  cursor: pointer;
+  box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.2);
+}
+
+.movies-list img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.loader {
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+
+input {
+  background-color: rgba(230, 220, 220, 0);
+  color: white;
+  border: none;
+  outline: none;
+  height: 20px;
+  transition: height 1s;
+  margin-left: 10px;
+}
+
+.search-bar {
+  border: 2px solid rgb(68, 67, 67);
+  padding: 2px;
+  padding-left: 5px;
+  border-radius: 5px;
 }

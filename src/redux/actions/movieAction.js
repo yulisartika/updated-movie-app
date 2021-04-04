@@ -1,6 +1,11 @@
 import axios from "axios";
 import { baseUrl, api_key } from "../../api/API";
-import { GET_GENRE, GET_MOVIES, GET_MOVIES_BY_GENRE_ID } from "../types/movie";
+import {
+  GET_GENRE,
+  GET_MOVIES,
+  GET_MOVIES_BY_GENRE_ID,
+  SEARCH_MOVIE,
+} from "../types/movie";
 
 export const getMovies = (page) => (dispatch) => {
   return axios
@@ -8,10 +13,11 @@ export const getMovies = (page) => (dispatch) => {
       `${baseUrl}movie/now_playing?api_key=${api_key}&language=en-US&page=${page}`
     )
     .then((response) => {
-      // console.log(response.data.results);
+      // console.log(response.data.total_pages);
       dispatch({
         type: GET_MOVIES,
         payload: response.data.results,
+        totalPages: response.data.total_pages,
       });
     })
     .catch((err) => alert(err));
@@ -35,6 +41,21 @@ export const getMoviesByGenreId = (id) => (dispatch) => {
     .then((response) => {
       dispatch({
         type: GET_MOVIES_BY_GENRE_ID,
+        payload: response.data.results,
+      });
+    })
+    .catch((err) => alert(err));
+};
+
+export const getMoviesBySearch = (keyword) => (dispatch) => {
+  return axios
+    .get(
+      `${baseUrl}search/movie?api_key=${api_key}&language=en-US&query=${keyword}`
+    )
+    .then((response) => {
+      console.log(response.data.results);
+      dispatch({
+        type: SEARCH_MOVIE,
         payload: response.data.results,
       });
     })

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Spinner, Row, Col, Button } from "reactstrap";
+import { Spinner, Button, Container } from "reactstrap";
 
 import { image_baseUrl } from "../../api/API";
 import CarouselHome from "../../components/CarouselHome";
+import GenreButtons from "../../components/GenreButtons";
 import MovieCard from "../../components/MovieCard";
 import Pagination from "../../components/Pagination";
 import {
@@ -11,16 +12,22 @@ import {
   getGenre,
   getMoviesByGenreId,
 } from "../../redux/actions/movieAction";
+import noImageFound from "../../assets/no_image_found.png";
 
 function Home() {
   const [genreId, setGenreId] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
-  const { allMovies, genres } = useSelector((state) => state.movies);
+  const { allMovies, totalPages, genres } = useSelector(
+    (state) => state.movies
+  );
 
   useEffect(() => {
+    setIsLoading(true);
     dispatch(getMovies());
     dispatch(getGenre());
+    setIsLoading(false);
   }, [dispatch]);
 
   const handleAllMovies = () => {
@@ -38,54 +45,54 @@ function Home() {
     <>
       <CarouselHome />
 
-      <div className="my-5 btn-genres">
-        <Button
-          className={` mr-2 mt-2 ${
-            genreId === 0 ? "secondary" : "genre-button"
-          }`}
-          onClick={handleAllMovies}
-        >
-          All
-        </Button>
+      <Container className="mt-5">
+        <div className="my-5 btn-genres">
+          <Button
+            className={` mr-2 mt-2 ${
+              genreId === 0 ? "secondary" : "genre-button"
+            }`}
+            onClick={handleAllMovies}
+          >
+            All
+          </Button>
 
-        {genres.length !== 0 &&
-          genres.map((item) => (
-            <Button
-              className={`mr-2 mt-2 ${
-                genreId === item.id ? "secondary" : "genre-button"
-              }`}
-              key={item.id}
-              onClick={() => handleGetMovieByGenre(item.id)}
-            >
-              {item.name}
-            </Button>
-          ))}
-      </div>
-
-      {allMovies.length !== 0 ? (
-        <Row className="content-card-container">
-          {allMovies.slice(0, allMovies.length - 2).map((item) => (
-            <Col xs="6" sm="4" md="2" key={item.id} className="pb-3 movieCard">
-              <MovieCard
-                image={`${image_baseUrl}${item.poster_path}`}
-                title={item.original_title}
-                rating={item.vote_average / 2}
-                vote={item.vote_count}
-                overview={item.overview}
-                release={item.release_date}
-                forAge={item.adult}
+          {genres.length !== 0 &&
+            genres.map((item) => (
+              <GenreButtons
+                genreId={genreId}
+                id={item.id}
+                genreName={item.name}
+                handleGetMovieByGenre={handleGetMovieByGenre}
               />
-            </Col>
-          ))}
-        </Row>
-      ) : (
-        <Spinner
-          style={{ width: "3rem", height: "3rem" }}
-          color="danger"
-          className="centered"
-        />
-      )}
-      <Pagination />
+            ))}
+        </div>
+
+        <h1>Now Playing</h1>
+        <div className="movies-list">
+          {allMovies.length !== 0 ? (
+            allMovies.map((item, index) => (
+              <div className="movie-item" key={index}>
+                <MovieCard
+                  image={
+                    item.poster_path !== null
+                      ? `${image_baseUrl}${item.poster_path}`
+                      : noImageFound
+                  }
+                  title={item.original_title}
+                  rating={item.vote_average / 2}
+                  vote={item.vote_count}
+                  overview={item.overview}
+                  release={item.release_date}
+                  forAge={item.adult}
+                />
+              </div>
+            ))
+          ) : (
+            <>{isLoading ? <Spinner color="danger" /> : "No Results"}</>
+          )}
+          <Pagination totalPages={totalPages} />
+        </div>
+      </Container>
     </>
   );
 }

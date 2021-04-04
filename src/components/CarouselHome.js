@@ -24,7 +24,7 @@ const items = [
   },
   {
     src: pic3,
-    altText: "Avatar",
+    altText: "AVATAR",
     caption: "Our Streaming Picks for the Month",
   },
 ];
@@ -59,6 +59,7 @@ function CarouselHome() {
       >
         <img src={item.src} alt={item.altText} className="carousel-posters" />
         <CarouselCaption
+          className="pb-4"
           captionHeader={item.altText}
           captionText={item.caption}
         />
@@ -69,6 +70,7 @@ function CarouselHome() {
   return (
     <Carousel activeIndex={activeIndex} next={next} previous={previous}>
       <CarouselIndicators
+        className="pb-3"
         items={items}
         activeIndex={activeIndex}
         onClickHandler={goToIndex}
