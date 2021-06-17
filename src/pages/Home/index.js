@@ -48,7 +48,7 @@ function Home() {
     <>
       <CarouselHome />
 
-      <Container className="mt-5">
+      <Container className="mt-5 mb-5">
         <div className="my-5 btn-genres">
           <Button
             className={` mr-2 mt-2 ${
@@ -93,10 +93,10 @@ function Home() {
           ) : (
             <>{isLoading ? <Spinner color="danger" /> : "No Results"}</>
           )}
-          {/* <Pagination totalPages={totalPages} /> */} {/* another pagination with only prev and next */}
-          <AnotherPagination currentPage={currentPage} totalPages={totalPages} />
         </div>
       </Container>
+      {/* <Pagination totalPages={totalPages} /> */} {/* another pagination with only prev and next */}
+      <AnotherPagination currentPage={currentPage} totalPages={totalPages} />
     </>
   );
 }
