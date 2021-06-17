@@ -40,7 +40,7 @@ function Navbar() {
           <AiOutlineClose />
         </span>
         {NavbarData.map((item) => (
-          <span>
+          <span className="routes">
             <Link to={item.path}>{item.title}</Link>
           </span>
         ))}
