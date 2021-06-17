@@ -13,13 +13,14 @@ import {
   getMoviesByGenreId,
 } from "../../redux/actions/movieAction";
 import noImageFound from "../../assets/no_image_found.png";
+import AnotherPagination from "../../components/AnotherPagination";
 
 function Home() {
   const [genreId, setGenreId] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
-  const { allMovies, totalPages, genres } = useSelector(
+  const { allMovies, totalPages, genres, currentPage} = useSelector(
     (state) => state.movies
   );
 
@@ -40,6 +41,8 @@ function Home() {
     dispatch(getMoviesByGenreId(id));
     console.log(allMovies);
   };
+
+  console.log("ini di page", currentPage)
 
   return (
     <>
@@ -90,7 +93,8 @@ function Home() {
           ) : (
             <>{isLoading ? <Spinner color="danger" /> : "No Results"}</>
           )}
-          <Pagination totalPages={totalPages} />
+          {/* <Pagination totalPages={totalPages} /> */} {/* another pagination with only prev and next */}
+          <AnotherPagination currentPage={currentPage} totalPages={totalPages} />
         </div>
       </Container>
     </>

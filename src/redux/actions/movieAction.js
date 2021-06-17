@@ -18,6 +18,7 @@ export const getMovies = (page) => (dispatch) => {
         type: GET_MOVIES,
         payload: response.data.results,
         totalPages: response.data.total_pages,
+        currentPage: response.data.page
       });
     })
     .catch((err) => alert(err));

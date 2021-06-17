@@ -21,13 +21,13 @@ function Pagination({ totalPages }) {
       {page > 1 ? (
         <Button onClick={() => handleChangePage(page - 1)}>{"<<"}</Button>
       ) : (
-        <Button disabled>{"No Previous"}</Button>
+        <Button disabled style={{backgroundColor: "rgb(22, 22, 22)"}}>{"<<"}</Button>
       )}
 
       {page !== totalPages ? (
         <Button onClick={() => handleChangePage(page + 1)}>{`>>`}</Button>
       ) : (
-        <Button disabled>{"No More Next"}</Button>
+        <Button disabled style={{backgroundColor: "rgb(22, 22, 22)"}}>{">>"}</Button>
       )}
     </div>
   );

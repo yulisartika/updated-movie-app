@@ -10,16 +10,18 @@ const initialState = {
   genres: [],
   searchMovie: [],
   totalPages: null,
+  currentPage: null
 };
 
 const movieReducer = (state = initialState, action) => {
-  const { type, payload, totalPages } = action;
+  const { type, payload, totalPages, currentPage } = action;
   switch (type) {
     case GET_MOVIES:
       return {
         ...state,
         allMovies: payload,
         totalPages: totalPages,
+        currentPage: currentPage
       };
     case GET_GENRE:
       return {
