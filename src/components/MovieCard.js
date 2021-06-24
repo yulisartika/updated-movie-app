@@ -68,7 +68,7 @@ function MovieCard(props) {
           </div>
           <ModalFooter className="rating-review-total">
             <ReactStars size={24} value={rating} edit={false} isHalf={true} />
-            <Button color="secondary" onClick={toggle}>
+            <Button color="secondary" onClick={() => alert("thanks for waiting! it's still under developed :)")}>
               See Reviews
             </Button>
           </ModalFooter>
