@@ -20,7 +20,7 @@ function SearcPage() {
   }, [dispatch]);
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5 mb-5">
       <h1>{searchMovie.length} Result(s)</h1>
       <div className="movies-list">
         {searchMovie.length !== 0 ? (
