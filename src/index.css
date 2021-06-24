@@ -175,3 +175,7 @@ input {
     width: 60%;
   }
 }
+
+.prev, .next {
+  padding: 0 25px;
+}

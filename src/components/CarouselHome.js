@@ -15,7 +15,7 @@ const items = [
   {
     src: pic1,
     altText: "JOHN WICK",
-    caption: "What to re-Watch on April",
+    caption: "What to re-Watch on June",
   },
   {
     src: pic2,

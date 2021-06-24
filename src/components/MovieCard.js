@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 import {
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
   Modal,
   ModalHeader,
   ModalBody,
@@ -44,7 +39,7 @@ function MovieCard(props) {
         </CardBody>
       </Card> */}
       <div onClick={toggle}>
-        <img src={image} />
+        <img src={image} alt="movie-img-rate" />
         <ReactStars size={15} value={rating} edit={false} isHalf={true} />
         <span>{vote} votes</span>
         <h5>{title}</h5>
@@ -53,7 +48,7 @@ function MovieCard(props) {
         <Modal isOpen={modal} toggle={toggle} className={className}>
           <ModalHeader toggle={toggle}>{title}</ModalHeader>
           <div className="modal-body-popUp">
-            <img src={image} />
+            <img src={image}  alt="movie-img-header" />
             <ModalBody>
               <b>
                 <u>Overview</u>

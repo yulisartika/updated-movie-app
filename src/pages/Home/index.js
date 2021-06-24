@@ -13,7 +13,6 @@ import {
   getMoviesByGenreId,
 } from "../../redux/actions/movieAction";
 import noImageFound from "../../assets/no_image_found.png";
-import AnotherPagination from "../../components/AnotherPagination";
 
 function Home() {
   const [genreId, setGenreId] = useState(0);
@@ -95,8 +94,8 @@ function Home() {
           )}
         </div>
       </Container>
-      {/* <Pagination totalPages={totalPages} /> */} {/* another pagination with only prev and next */}
-      <AnotherPagination currentPage={currentPage} totalPages={totalPages} />
+      <Pagination totalPages={totalPages} /> {/* another pagination with only prev and next */}
+      {/* <AnotherPagination currentPage={currentPage} totalPages={totalPages} /> */}
     </>
   );
 }
