@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Spinner, Container } from "reactstrap";
+import { useLocation } from "react-router-dom";
 
 import { image_baseUrl } from "../../api/API";
 import MovieCard from "../../components/MovieCard";
@@ -13,8 +14,9 @@ const PopularTvShows = () => {
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
-  const { popularTvShows, popTvShowsTotalPages, popTvShowCurrentPage } =
-    useSelector((state) => state.tvShows);
+  const { popularTvShows, popTvShowsTotalPages } = useSelector(
+    (state) => state.tvShows
+  );
 
   const handleChangePage = (pg) => {
     setPage(pg);
@@ -27,9 +29,12 @@ const PopularTvShows = () => {
     setIsLoading(false);
   }, [dispatch, page]);
 
-  console.log(popularTvShows);
-  console.log(popTvShowsTotalPages);
-  console.log(popTvShowCurrentPage);
+  // console.log(popularTvShows);
+  // console.log(popTvShowsTotalPages);
+  // console.log(popTvShowCurrentPage);
+
+  const location = useLocation();
+  console.log(location);
 
   return (
     <>
