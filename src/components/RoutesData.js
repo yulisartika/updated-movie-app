@@ -1,45 +1,39 @@
 import Home from "../pages/Home";
 import MovieDetail from "../pages/MovieDetail";
-import Movies from "../pages/Movies";
-import NowPlaying from "../pages/NowPlaying";
+import PopularTvShows from "../pages/PopularTvShows";
 import Popular from "../pages/Popular";
 import SearcPage from "../pages/SearchPage";
-import Serials from "../pages/Serials";
+import TvShows from "../pages/TvShows";
 
 export const RoutesData = [
   {
     path: "/",
     component: Home,
-    exact: true
+    exact: true,
   },
   {
-    path: "/movies",
-    component: Movies,
-    exact: true
+    path: "/tv-shows",
+    component: TvShows,
+    exact: true,
   },
   {
-    path: "/serials",
-    component: Serials,
-    exact: true
-  },
-  {
-    path: "/popular",
+    path: "/popular-movies",
     component: Popular,
-    exact: true
+    exact: true,
   },
   {
-    path: "/now-playing",
-    component: NowPlaying,
-    exact: true
+    path: "/popular-shows",
+    component: PopularTvShows,
+    exact: true,
   },
   {
     path: "/search-page",
     component: SearcPage,
-    exact: true
+    exact: true,
   },
   {
     path: "/movie-detail/:id",
     component: MovieDetail,
-    exact: true
-  }
+    exact: true,
+  },
 ];

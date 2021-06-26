@@ -77,8 +77,8 @@ function Home() {
         <h1>Now Playing</h1>
         <div className="movies-list">
           {allMovies.length !== 0 ? (
-            allMovies.map((item, index) => (
-              <div className="movie-item" key={index}>
+            allMovies.map((item) => (
+              <div className="movie-item" key={item.id}>
                 <MovieCard
                   image={
                     item.poster_path !== null

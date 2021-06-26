@@ -1,38 +1,31 @@
 import Home from "../pages/Home";
-import Movies from "../pages/Movies";
-import NowPlaying from "../pages/NowPlaying";
+import PopularTvShows from "../pages/PopularTvShows";
 import Popular from "../pages/Popular";
-import Serials from "../pages/Serials";
+import TvShows from "../pages/TvShows";
 
 export const NavbarData = [
   {
-    title: "Home",
+    title: "Movies",
     path: "/",
     component: Home,
     exact: true,
   },
   {
-    title: "Movies",
-    path: "/movies",
-    component: Movies,
-    exact: true,
-  },
-  {
-    title: "Serials",
-    path: "/serials",
-    component: Serials,
-    exact: true,
-  },
-  {
-    title: "Popular",
-    path: "/popular",
+    title: "Popular Movies",
+    path: "/popular-movies",
     component: Popular,
     exact: true,
   },
   {
-    title: "Now Playing",
-    path: "/now-playing",
-    component: NowPlaying, // ini buat home aja nnti dihapus
+    title: "TV Shows",
+    path: "/tv-shows",
+    component: TvShows,
+    exact: true,
+  },
+  {
+    title: "Popular Shows",
+    path: "/popular-shows",
+    component: PopularTvShows, // ini buat home aja nnti dihapus
     exact: true,
   },
 ];
