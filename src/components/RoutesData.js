@@ -1,7 +1,7 @@
 import Home from "../pages/Home";
 import MovieDetail from "../pages/MovieDetail";
 import PopularTvShows from "../pages/PopularTvShows";
-import Popular from "../pages/Popular";
+import PopularMovies from "../pages/PopularMovies";
 import SearcPage from "../pages/SearchPage";
 import TvShows from "../pages/TvShows";
 
@@ -18,7 +18,7 @@ export const RoutesData = [
   },
   {
     path: "/popular-movies",
-    component: Popular,
+    component: PopularMovies,
     exact: true,
   },
   {

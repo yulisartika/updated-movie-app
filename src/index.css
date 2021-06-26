@@ -148,7 +148,7 @@ input {
 .currPage {
   font-weight: 900;
   border-bottom: 5px solid rgb(255, 255, 255);
-  padding-bottom: 5px
+  padding-bottom: 5px;
 }
 
 .stopPage {
@@ -157,10 +157,10 @@ input {
 
 .routes a:hover {
   text-decoration: none;
-  text-shadow: 2px 2px #FF0000;
+  text-shadow: 2px 2px #ff0000;
 }
 
-.routes a{
+.routes a {
   color: whitesmoke;
   font-weight: 500;
 }
@@ -169,13 +169,26 @@ input {
   margin-top: 5px;
 }
 
-
 @media only screen and (max-width: 843px) {
   input {
     width: 60%;
   }
 }
 
-.prev, .next {
+.prev,
+.next {
   padding: 0 25px;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5rem;
+  height: 5rem;
+  /* margin: auto; */
+}
+
+.react-stars {
+  z-index: -1;
 }

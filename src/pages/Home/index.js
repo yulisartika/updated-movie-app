@@ -16,7 +16,6 @@ import noImageFound from "../../assets/no_image_found.png";
 
 function Home() {
   const [genreId, setGenreId] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -30,10 +29,8 @@ function Home() {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     dispatch(getMovies(page));
     dispatch(getGenre());
-    setIsLoading(false);
   }, [dispatch, page]);
 
   const handleAllMovies = () => {
@@ -91,19 +88,24 @@ function Home() {
                   overview={item.overview}
                   release={item.release_date}
                   forAge={item.adult}
+                  id={item.id}
                 />
               </div>
             ))
           ) : (
-            <>{isLoading ? <Spinner color="danger" /> : "No Results"}</>
+            <>
+              <Spinner color="danger" className="spinner" />
+            </>
           )}
         </div>
       </Container>
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        handleChangePage={handleChangePage}
-      />
+      {allMovies.length !== 0 && (
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          handleChangePage={handleChangePage}
+        />
+      )}
       {/* another pagination with only prev and next */}
       {/* <AnotherPagination currentPage={currentPage} totalPages={totalPages} /> */}
     </>

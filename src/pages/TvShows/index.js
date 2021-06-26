@@ -9,7 +9,6 @@ import noImageFound from "../../assets/no_image_found.png";
 import { getAiringTvShows } from "../../redux/actions/tvShowsAction";
 
 const TvShows = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -23,13 +22,11 @@ const TvShows = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     dispatch(getAiringTvShows(page));
-    setIsLoading(false);
   }, [dispatch, page]);
 
-  console.log(airingTvShows);
-  console.log(tvShowsTotalPages);
+  // console.log(airingTvShows);
+  // console.log(tvShowsTotalPages);
   console.log(tvShowsCurrentPage);
 
   return (
@@ -51,20 +48,25 @@ const TvShows = () => {
                   vote={item.vote_count}
                   overview={item.overview}
                   release={item.first_air_date}
-                  // forAge={item.adult}
+                  forAge={item.adult}
+                  id={item.id}
                 />
               </div>
             ))
           ) : (
-            <>{isLoading ? <Spinner color="danger" /> : "No Results"}</>
+            <>
+              <Spinner color="danger" className="spinner" />
+            </>
           )}
         </div>
       </Container>
-      <Pagination
-        page={page}
-        totalPages={tvShowsTotalPages}
-        handleChangePage={handleChangePage}
-      />
+      {airingTvShows.length !== 0 && (
+        <Pagination
+          page={page}
+          totalPages={tvShowsTotalPages}
+          handleChangePage={handleChangePage}
+        />
+      )}
     </>
   );
 };

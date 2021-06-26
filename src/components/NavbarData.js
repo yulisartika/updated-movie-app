@@ -1,7 +1,7 @@
 import Home from "../pages/Home";
 import PopularTvShows from "../pages/PopularTvShows";
-import Popular from "../pages/Popular";
 import TvShows from "../pages/TvShows";
+import PopularMovies from "../pages/PopularMovies";
 
 export const NavbarData = [
   {
@@ -13,7 +13,7 @@ export const NavbarData = [
   {
     title: "Popular Movies",
     path: "/popular-movies",
-    component: Popular,
+    component: PopularMovies,
     exact: true,
   },
   {

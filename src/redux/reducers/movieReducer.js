@@ -2,6 +2,8 @@ import {
   GET_GENRE,
   GET_MOVIES,
   GET_MOVIES_BY_GENRE_ID,
+  GET_MOVIE_DETAIL,
+  GET_MOVIE_REVIEWS,
   GET_POPULAR_MOVIES,
   SEARCH_MOVIE,
 } from "../types/movie";
@@ -18,6 +20,8 @@ const initialState = {
   totalSearchPages: null,
   totalSearchResults: null,
   keyword: "",
+  movieDetail: null,
+  movieReviews: [],
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -64,6 +68,16 @@ const movieReducer = (state = initialState, action) => {
         popularMovies: payload,
         totalPagesPopMovie: totalPagesPopMovie,
         currentPagePopMovie: currentPagePopMovie,
+      };
+    case GET_MOVIE_DETAIL:
+      return {
+        ...state,
+        movieDetail: payload,
+      };
+    case GET_MOVIE_REVIEWS:
+      return {
+        ...state,
+        movieReviews: payload,
       };
     default:
       return state;

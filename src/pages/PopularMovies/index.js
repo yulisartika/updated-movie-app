@@ -8,10 +8,8 @@ import Pagination from "../../components/Pagination";
 import { getPopularMovies } from "../../redux/actions/movieAction";
 import noImageFound from "../../assets/no_image_found.png";
 
-const Popular = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const PopularMovies = () => {
   const [page, setPage] = useState(1);
-  //const [popMovie, setPopMovie] = useState([]);
 
   const dispatch = useDispatch();
   const { popularMovies, totalPagesPopMovie } = useSelector(
@@ -24,20 +22,10 @@ const Popular = () => {
   };
 
   useEffect(() => {
-    // axios
-    //   .get(
-    //     `https://api.themoviedb.org/3/movie/popular?api_key=834c193ca1db3c5318aaf7d115b90231&language=en-US&page=1`
-    //   )
-    //   .then((res) => setPopMovie(res.data.results));
-    setIsLoading(true);
     dispatch(getPopularMovies(page));
-    setIsLoading(false);
   }, [dispatch, page]);
 
-  console.log("popular page", popularMovies);
-  // console.log(popularMovies.results);
-  // totalPagesPopMovie: null,
-  // currentPagePopMovie: null,
+  // console.log("popular page", popularMovies);
 
   return (
     <>
@@ -45,7 +33,7 @@ const Popular = () => {
         <h1>Popular Movies</h1>
         <div className="movies-list">
           {popularMovies.length !== 0 ? (
-            popularMovies.map((item, index) => (
+            popularMovies.map((item) => (
               <div className="movie-item" key={item.id}>
                 <MovieCard
                   image={
@@ -59,21 +47,26 @@ const Popular = () => {
                   overview={item.overview}
                   release={item.release_date}
                   forAge={item.adult}
+                  id={item.id}
                 />
               </div>
             ))
           ) : (
-            <>{isLoading ? <Spinner color="danger" /> : "No Results"}</>
+            <>
+              <Spinner color="danger" className="spinner" />
+            </>
           )}
         </div>
       </Container>
-      <Pagination
-        page={page}
-        totalPages={totalPagesPopMovie}
-        handleChangePage={handleChangePage}
-      />
+      {popularMovies.length !== 0 && (
+        <Pagination
+          page={page}
+          totalPages={totalPagesPopMovie}
+          handleChangePage={handleChangePage}
+        />
+      )}
     </>
   );
 };
 
-export default Popular;
+export default PopularMovies;

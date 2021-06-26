@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-} from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 import ReactStars from "react-rating-stars-component";
+import { useHistory } from "react-router-dom";
 
 function MovieCard(props) {
   const {
@@ -18,9 +13,11 @@ function MovieCard(props) {
     overview,
     release,
     forAge,
+    id,
   } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+  const history = useHistory();
 
   return (
     <div>
@@ -48,7 +45,7 @@ function MovieCard(props) {
         <Modal isOpen={modal} toggle={toggle} className={className}>
           <ModalHeader toggle={toggle}>{title}</ModalHeader>
           <div className="modal-body-popUp">
-            <img src={image}  alt="movie-img-header" />
+            <img src={image} alt="movie-img-header" />
             <ModalBody>
               <b>
                 <u>Overview</u>
@@ -57,7 +54,7 @@ function MovieCard(props) {
               <br />
               <b>
                 <u>Release Date</u>:{" "}
-              </b>{" "}
+              </b>
               {release}
               <br />
               <b>
@@ -68,8 +65,11 @@ function MovieCard(props) {
           </div>
           <ModalFooter className="rating-review-total">
             <ReactStars size={24} value={rating} edit={false} isHalf={true} />
-            <Button color="secondary" onClick={() => alert("thanks for waiting! it's still under developed :)")}>
-              See Reviews
+            <Button
+              color="secondary"
+              onClick={() => history.push(`/movie-detail/${id}`)}
+            >
+              See Details and Reviews
             </Button>
           </ModalFooter>
         </Modal>

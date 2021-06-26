@@ -4,6 +4,8 @@ import {
   GET_GENRE,
   GET_MOVIES,
   GET_MOVIES_BY_GENRE_ID,
+  GET_MOVIE_DETAIL,
+  GET_MOVIE_REVIEWS,
   GET_POPULAR_MOVIES,
   SEARCH_MOVIE,
 } from "../types/movie";
@@ -82,4 +84,29 @@ export const getPopularMovies = (page) => (dispatch) => {
       });
     })
     .catch((err) => alert(err));
+};
+
+export const getMovieDetail = (id) => (dispatch) => {
+  return axios
+    .get(`${baseUrl}movie/${id}?api_key=${api_key}&language=en-US`)
+    .then((response) => {
+      dispatch({
+        type: GET_MOVIE_DETAIL,
+        payload: response.data,
+      });
+    });
+};
+
+// do make page as params later
+export const getMovieReviews = (id) => (dispatch) => {
+  return axios
+    .get(
+      `${baseUrl}movie/${id}/reviews?api_key=${api_key}&language=en-US&page=1`
+    )
+    .then((response) => {
+      dispatch({
+        type: GET_MOVIE_REVIEWS,
+        payload: response.data.results,
+      });
+    });
 };

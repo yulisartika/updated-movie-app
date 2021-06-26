@@ -10,7 +10,6 @@ import noImageFound from "../../assets/no_image_found.png";
 import { getPopularTvShows } from "../../redux/actions/tvShowsAction";
 
 const PopularTvShows = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
@@ -24,9 +23,7 @@ const PopularTvShows = () => {
   };
 
   useEffect(() => {
-    setIsLoading(true);
     dispatch(getPopularTvShows(page));
-    setIsLoading(false);
   }, [dispatch, page]);
 
   // const location = useLocation(); // to define the current active pathname location
@@ -51,20 +48,22 @@ const PopularTvShows = () => {
                   vote={item.vote_count}
                   overview={item.overview}
                   release={item.first_air_date}
-                  // forAge={item.adult}
+                  id={item.id}
                 />
               </div>
             ))
           ) : (
-            <>{isLoading ? <Spinner color="danger" /> : "No Results"}</>
+            <Spinner color="danger" className="spinner" />
           )}
         </div>
       </Container>
-      <Pagination
-        page={page}
-        totalPages={popTvShowsTotalPages}
-        handleChangePage={handleChangePage}
-      />
+      {popularTvShows.length !== 0 && (
+        <Pagination
+          page={page}
+          totalPages={popTvShowsTotalPages}
+          handleChangePage={handleChangePage}
+        />
+      )}
     </>
   );
 };

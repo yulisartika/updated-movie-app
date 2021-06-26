@@ -52,11 +52,18 @@ function SearcPage() {
                   overview={item.overview}
                   release={item.release_date}
                   forAge={item.adult}
+                  id={item.id}
                 />
               </div>
             ))
           ) : (
-            <>{isLoading ? <Spinner color="danger" /> : "No Results"}</>
+            <>
+              {isLoading ? (
+                <Spinner color="danger" className="spinner" type="grow" />
+              ) : (
+                "No Results"
+              )}
+            </>
           )}
         </div>
       </Container>
