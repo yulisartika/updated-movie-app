@@ -34,7 +34,7 @@ const PopularTvShows = () => {
   return (
     <>
       <Container className="mt-5 mb-5">
-        <h1>TV Airing Today</h1>
+        <h1>Popular Shows</h1>
         <div className="movies-list">
           {popularTvShows.length !== 0 ? (
             popularTvShows.map((item) => (
