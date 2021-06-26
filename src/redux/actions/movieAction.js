@@ -4,6 +4,7 @@ import {
   GET_GENRE,
   GET_MOVIES,
   GET_MOVIES_BY_GENRE_ID,
+  GET_POPULAR_MOVIES,
   SEARCH_MOVIE,
 } from "../types/movie";
 
@@ -18,7 +19,7 @@ export const getMovies = (page) => (dispatch) => {
         type: GET_MOVIES,
         payload: response.data.results,
         totalPages: response.data.total_pages,
-        currentPage: response.data.page
+        currentPage: response.data.page,
       });
     })
     .catch((err) => alert(err));
@@ -54,10 +55,27 @@ export const getMoviesBySearch = (keyword) => (dispatch) => {
       `${baseUrl}search/movie?api_key=${api_key}&language=en-US&query=${keyword}`
     )
     .then((response) => {
-      console.log(response.data.results);
+      // console.log(response.data.results);
       dispatch({
         type: SEARCH_MOVIE,
         payload: response.data.results,
+      });
+    })
+    .catch((err) => alert(err));
+};
+
+export const getPopularMovies = (page) => (dispatch) => {
+  return axios
+    .get(
+      `${baseUrl}movie/popular?api_key=${api_key}&language=en-US&page=${page}`
+    )
+    .then((response) => {
+      // console.log(response.data.results);
+      dispatch({
+        type: GET_POPULAR_MOVIES,
+        payload: response.data.results,
+        totalPagesPopMovie: response.data.total_pages,
+        currentPagePopMovie: response.data.page,
       });
     })
     .catch((err) => alert(err));

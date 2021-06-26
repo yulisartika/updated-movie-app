@@ -17,18 +17,24 @@ import noImageFound from "../../assets/no_image_found.png";
 function Home() {
   const [genreId, setGenreId] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
-  const { allMovies, totalPages, genres, currentPage} = useSelector(
+  const { allMovies, totalPages, genres, currentPage } = useSelector(
     (state) => state.movies
   );
 
+  const handleChangePage = (pg) => {
+    setPage(pg);
+    dispatch(getMovies(pg));
+  };
+
   useEffect(() => {
     setIsLoading(true);
-    dispatch(getMovies());
+    dispatch(getMovies(page));
     dispatch(getGenre());
     setIsLoading(false);
-  }, [dispatch]);
+  }, [dispatch, page]);
 
   const handleAllMovies = () => {
     setGenreId(0);
@@ -41,12 +47,11 @@ function Home() {
     console.log(allMovies);
   };
 
-  console.log("ini di page", currentPage)
+  console.log("ini di page", currentPage);
 
   return (
     <>
       <CarouselHome />
-
       <Container className="mt-5 mb-5">
         <div className="my-5 btn-genres">
           <Button
@@ -94,7 +99,12 @@ function Home() {
           )}
         </div>
       </Container>
-      <Pagination totalPages={totalPages} /> {/* another pagination with only prev and next */}
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        handleChangePage={handleChangePage}
+      />
+      {/* another pagination with only prev and next */}
       {/* <AnotherPagination currentPage={currentPage} totalPages={totalPages} /> */}
     </>
   );

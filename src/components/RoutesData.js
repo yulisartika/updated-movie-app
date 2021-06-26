@@ -1,38 +1,45 @@
 import Home from "../pages/Home";
+import MovieDetail from "../pages/MovieDetail";
 import Movies from "../pages/Movies";
 import NowPlaying from "../pages/NowPlaying";
 import Popular from "../pages/Popular";
+import SearcPage from "../pages/SearchPage";
 import Serials from "../pages/Serials";
 
-export const NavbarData = [
+export const RoutesData = [
   {
-    title: "Home",
     path: "/",
     component: Home,
-    exact: true,
+    exact: true
   },
   {
-    title: "Movies",
     path: "/movies",
     component: Movies,
-    exact: true,
+    exact: true
   },
   {
-    title: "Serials",
     path: "/serials",
     component: Serials,
-    exact: true,
+    exact: true
   },
   {
-    title: "Popular",
     path: "/popular",
     component: Popular,
-    exact: true,
+    exact: true
   },
   {
-    title: "Now Playing",
     path: "/now-playing",
-    component: NowPlaying, // ini buat home aja nnti dihapus
-    exact: true,
+    component: NowPlaying,
+    exact: true
   },
+  {
+    path: "/search-page",
+    component: SearcPage,
+    exact: true
+  },
+  {
+    path: "/movie-detail/:id",
+    component: MovieDetail,
+    exact: true
+  }
 ];
