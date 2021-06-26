@@ -50,7 +50,9 @@ const MovieDetail = () => {
           <div>
             <h3>
               {movieDetail.homepage !== undefined && (
-                <a href={movieDetail.homepage}>Watch the Trailer</a>
+                <a href={movieDetail.homepage} target="_blank" rel="noreferrer">
+                  Watch the Trailer
+                </a>
               )}
             </h3>
 
