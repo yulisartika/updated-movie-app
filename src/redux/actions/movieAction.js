@@ -59,6 +59,9 @@ export const getMoviesAndShowsBySearch = (keyword, page) => (dispatch) => {
       dispatch({
         type: SEARCH_MOVIE,
         payload: response.data.results,
+        totalSearchPages: response.data.total_pages,
+        totalSearchResults: response.data.total_results,
+        keyword: keyword,
       });
     })
     .catch((err) => alert(err));

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Spinner, Container } from "reactstrap";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 import { image_baseUrl } from "../../api/API";
 import MovieCard from "../../components/MovieCard";
@@ -29,12 +29,8 @@ const PopularTvShows = () => {
     setIsLoading(false);
   }, [dispatch, page]);
 
-  // console.log(popularTvShows);
-  // console.log(popTvShowsTotalPages);
-  // console.log(popTvShowCurrentPage);
-
-  const location = useLocation();
-  console.log(location.pathname === "/popular-shows" ? "yes" : "salah");
+  // const location = useLocation(); // to define the current active pathname location
+  // console.log(location.pathname === "/popular-shows" ? "yes" : "salah");
 
   return (
     <>

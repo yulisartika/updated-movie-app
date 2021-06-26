@@ -15,6 +15,9 @@ const initialState = {
   popularMovies: [],
   totalPagesPopMovie: null,
   currentPagePopMovie: null,
+  totalSearchPages: null,
+  totalSearchResults: null,
+  keyword: "",
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -25,6 +28,9 @@ const movieReducer = (state = initialState, action) => {
     currentPage,
     totalPagesPopMovie,
     currentPagePopMovie,
+    totalSearchPages,
+    totalSearchResults,
+    keyword,
   } = action;
   switch (type) {
     case GET_MOVIES:
@@ -48,6 +54,9 @@ const movieReducer = (state = initialState, action) => {
       return {
         ...state,
         searchMovie: payload,
+        totalSearchPages: totalSearchPages,
+        totalSearchResults: totalSearchResults,
+        keyword: keyword,
       };
     case GET_POPULAR_MOVIES:
       return {
