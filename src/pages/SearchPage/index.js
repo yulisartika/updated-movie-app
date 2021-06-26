@@ -4,7 +4,7 @@ import { Spinner, Container } from "reactstrap";
 
 import { image_baseUrl } from "../../api/API";
 import MovieCard from "../../components/MovieCard";
-import { getMoviesBySearch } from "../../redux/actions/movieAction";
+import { getMoviesAndShowsBySearch } from "../../redux/actions/movieAction";
 import noImageFound from "../../assets/no_image_found.png";
 
 function SearcPage() {
@@ -15,7 +15,7 @@ function SearcPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    dispatch(getMoviesBySearch());
+    dispatch(getMoviesAndShowsBySearch());
     setIsLoading(false);
   }, [dispatch]);
 

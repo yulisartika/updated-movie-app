@@ -6,7 +6,7 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { NavbarData } from "./NavbarData";
-import { getMoviesBySearch } from "../redux/actions/movieAction";
+import { getMoviesAndShowsBySearch } from "../redux/actions/movieAction";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -23,7 +23,7 @@ function Navbar() {
 
   const handleSubmitSearch = (e) => {
     e.preventDefault();
-    dispatch(getMoviesBySearch(keyword));
+    dispatch(getMoviesAndShowsBySearch(keyword));
     history.push("/search-page");
   };
 
@@ -49,7 +49,7 @@ function Navbar() {
           <input
             type="search"
             required={true}
-            placeholder="Search Movies..."
+            placeholder="Search Movies and Shows..."
             value={keyword}
             onChange={handleChangeSearch}
           />

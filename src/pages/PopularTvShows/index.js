@@ -34,7 +34,7 @@ const PopularTvShows = () => {
   // console.log(popTvShowCurrentPage);
 
   const location = useLocation();
-  console.log(location);
+  console.log(location.pathname === "/popular-shows" ? "yes" : "salah");
 
   return (
     <>

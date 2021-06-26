@@ -49,10 +49,10 @@ export const getMoviesByGenreId = (id) => (dispatch) => {
     .catch((err) => alert(err));
 };
 
-export const getMoviesBySearch = (keyword) => (dispatch) => {
+export const getMoviesAndShowsBySearch = (keyword, page) => (dispatch) => {
   return axios
     .get(
-      `${baseUrl}search/movie?api_key=${api_key}&language=en-US&query=${keyword}`
+      `${baseUrl}search/multi?api_key=${api_key}&language=en-US&query=${keyword}&page=${page}`
     )
     .then((response) => {
       // console.log(response.data.results);
