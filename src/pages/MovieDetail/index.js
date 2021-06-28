@@ -96,7 +96,7 @@ const MovieDetail = () => {
                   </span>
                   <p>Created at: {item.created_at.split("T")[0]}</p>
                   <p>
-                    {item.content.slice(0, 500)} <a href={item.url}> . . . .</a>
+                    {item.content.slice(0, 500)} <a href={item.url} target="_blank" rel="noreferrer"> . . . .</a>
                   </p>
                 </>
               ))}
